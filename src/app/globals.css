@@ -11,7 +11,7 @@
   --font-accent: var(--font-accent);
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-olive: var(--olive);
