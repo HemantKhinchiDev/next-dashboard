@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
 import "./globals.css";
+import { League_Spartan, Open_Sans, Plus_Jakarta_Sans } from "next/font/google";
 
-const rubi = Rubik({
+const leagueSpartan = League_Spartan({
   subsets: ["latin"],
-  variable: "--font-rubik",
-  weight: "400",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-accent",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rubi.variable} antialiased`}>
+      <body
+        className={`${leagueSpartan.variable} ${openSans.variable} ${plusJakarta.variable} antialiased`}
+      >
         {children}
       </body>
     </html>
