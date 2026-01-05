@@ -72,7 +72,7 @@ async function seedCustomers() {
             (customer) => client.sql`
         INSERT INTO customers (id, name, email, image_url)
         VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
-        ON CONFLICT (id) DO NOTHING;
+        ON CONFLICT (id) DO UPDATE SET image_url = EXCLUDED.image_url;
       `,
         ),
     );

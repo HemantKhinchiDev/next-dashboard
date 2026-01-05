@@ -196,7 +196,7 @@ const Footer = () => {
             <div className="border-t border-white/10 bg-[#0b0b0b]">
                 <div className="mx-auto max-w-7xl px-4  py-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
                     <p className="text-gray-500">
-                        Copyright© {new Date().getFullYear()} <span className="text-white">BlushoNext</span> by <span className="text-white">Hemant_Dev</span>.
+                        Copyright© {new Date().getFullYear()} <span className="text-white">BlushoNext</span> by <span className="text-white">HemantKhinchiDev</span>.
                     </p>
                     <div className="flex items-center gap-3 text-2xl text-[#cfcfcf]">
                         <FaCcMastercard className="hover:text-white transition-colors" />
