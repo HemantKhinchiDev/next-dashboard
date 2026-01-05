@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { League_Spartan, Open_Sans, Plus_Jakarta_Sans } from "next/font/google";
+
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
