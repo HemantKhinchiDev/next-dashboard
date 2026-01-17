@@ -49,9 +49,26 @@ const Hero = () => {
 
             {/* Floating Currency Switcher (Left) */}
             <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden 2xl:flex flex-col gap-0 shadow-lg bg-white rounded-r-md overflow-hidden">
-                <button className="px-3 py-3 text-xs font-bold bg-olive text-white writing-mode-vertical">USD</button>
-                <button className="px-3 py-3 text-xs font-bold text-gray-400 hover:text-dark hover:bg-gray-100 transition-colors writing-mode-vertical">AED</button>
-                <button className="px-3 py-3 text-xs font-bold text-gray-400 hover:text-dark hover:bg-gray-100 transition-colors writing-mode-vertical">EUR</button>
+                {[
+                    { code: "USD", icon: "/images/us.svg", label: "USD" },
+                    { code: "AED", icon: "/images/ae.svg", label: "AED" },
+                    { code: "EUR", icon: "/images/eu.svg", label: "EUR" },
+                ].map((currency, index) => (
+                    <button
+                        key={currency.code}
+                        className={`group flex items-center justify-center gap-0 px-3 py-3 text-xs font-bold transition-all duration-300 ${index === 0
+                            ? "bg-olive text-white"
+                            : "text-gray-400 hover:text-white hover:bg-olive"
+                            }`}
+                    >
+                        <img
+                            src={currency.icon}
+                            alt={currency.code}
+                            className="w-0 h-4 object-contain opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out"
+                        />
+                        <span>{currency.label}</span>
+                    </button>
+                ))}
             </div>
 
             <div className="w-full h-full mx-auto px-4 2xl:px-[80px] flex items-center relative z-10">
