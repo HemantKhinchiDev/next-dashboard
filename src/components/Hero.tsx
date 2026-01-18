@@ -10,7 +10,7 @@ const slides = [
         tagline: "BEAUTY & SKIN CARE",
         title: "FRESH LOOK MAKES YOUR CONFIDENT",
         description: "Borem ipsum dolor sit amet, Vim id Assentior Moderatius Nelig Endis iuvaret Est Per Et Inani Alienum.",
-        image: "/slider-01-bg.png", // Using local image
+        image: "/images/home6-slider-01-bg.webp", // Using local image
         bgColor: "bg-[#f5e6e0]" // Warm nude/beige tone from screenshot
     },
     {
@@ -18,7 +18,7 @@ const slides = [
         tagline: "ORGANIC INGREDIENTS",
         title: "NATURAL GLOW FOR EVERY SKIN",
         description: "Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
-        image: "/slider-02-bg.png", // Using local image
+        image: "/images/home6-slider-02-bg.webp", // Using local image
         bgColor: "#e8dfd8"
     }
 ];
@@ -38,42 +38,54 @@ const Hero = () => {
     return (
         <section className={`relative w-full h-[600px] lg:h-[800px] overflow-hidden transition-colors duration-500 ease-in-out ${slides[currentSlide].bgColor === "#e8dfd8" ? "bg-[#e8dfd8]" : "bg-[#f5e6e0]"}`}>
 
-            {/* Floating Currency Switcher (Left) */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden 2xl:flex flex-col gap-0 shadow-lg bg-white rounded-r-md overflow-hidden">
-                <button className="px-3 py-3 text-xs font-bold bg-olive text-white writing-mode-vertical">USD</button>
-                <button className="px-3 py-3 text-xs font-bold text-gray-400 hover:text-dark hover:bg-gray-100 transition-colors writing-mode-vertical">AED</button>
-                <button className="px-3 py-3 text-xs font-bold text-gray-400 hover:text-dark hover:bg-gray-100 transition-colors writing-mode-vertical">EUR</button>
+            <div className="absolute inset-0 w-full h-full">
+                <img
+                    src={slides[currentSlide].image}
+                    alt="Hero Background"
+                    className="w-full h-full object-cover object-center lg:object-right"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/40 to-transparent lg:from-transparent"></div>
             </div>
 
-            <div className="w-full h-full mx-auto px-4 2xl:px-[80px] flex items-center relative">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full h-full">
-
-                    {/* Left: Text Content */}
-                    <div className="flex flex-col items-start gap-6 z-10 pl-4 lg:pl-16">
-                        <span className="text-sm font-bold tracking-[0.2em] text-gray-500 animate-fadeInUp">
-                            {slides[currentSlide].tagline}
-                        </span>
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-dark leading-[1.1] animate-fadeInUp delay-100 max-w-xl">
-                            {slides[currentSlide].title}
-                        </h1>
-                        <p className="text-gray-600 max-w-lg leading-relaxed animate-fadeInUp delay-200">
-                            {slides[currentSlide].description}
-                        </p>
-                        <button className="bg-olive text-white px-8 py-4 text-sm font-bold tracking-widest hover:bg-dark transition-colors duration-300 animate-fadeInUp delay-300">
-                            SHOP NOW
-                        </button>
-                    </div>
-
-                    {/* Right: Image */}
-                    <div className="relative h-full w-full flex items-end justify-center lg:justify-end">
-                        {/* We use a simple img tag here for the external demo URL to avoid Next.js config errors for now, 
-                             but ideally this should be next/image with configured domains */}
+            {/* Floating Currency Switcher (Left) */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden 2xl:flex flex-col gap-0 shadow-lg bg-white rounded-r-md overflow-hidden">
+                {[
+                    { code: "USD", icon: "/images/us.svg", label: "USD" },
+                    { code: "AED", icon: "/images/ae.svg", label: "AED" },
+                    { code: "EUR", icon: "/images/eu.svg", label: "EUR" },
+                ].map((currency, index) => (
+                    <button
+                        key={currency.code}
+                        className={`group flex items-center justify-center gap-0 px-3 py-3 text-xs font-bold transition-all duration-300 ${index === 0
+                            ? "bg-olive text-white"
+                            : "text-gray-400 hover:text-white hover:bg-olive"
+                            }`}
+                    >
                         <img
-                            src={slides[currentSlide].image}
-                            alt="Hero Product"
-                            className="object-contain h-[70%] lg:h-[90%] w-auto animate-fadeInRight"
+                            src={currency.icon}
+                            alt={currency.code}
+                            className="w-0 h-4 object-contain opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out"
                         />
-                    </div>
+                        <span>{currency.label}</span>
+                    </button>
+                ))}
+            </div>
+
+            <div className="w-full h-full mx-auto px-4 2xl:px-[80px] flex items-center relative z-10">
+                {/* Text Content */}
+                <div className="flex flex-col items-start gap-6 pl-4 lg:pl-16 max-w-xl">
+                    <span className="text-sm font-bold tracking-[0.2em] text-gray-600 animate-fadeInUp">
+                        {slides[currentSlide].tagline}
+                    </span>
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-dark leading-[1.1] animate-fadeInUp delay-100">
+                        {slides[currentSlide].title}
+                    </h1>
+                    <p className="text-gray-700 text-lg leading-relaxed animate-fadeInUp delay-200">
+                        {slides[currentSlide].description}
+                    </p>
+                    <button className="bg-olive text-white px-8 py-4 text-sm font-bold tracking-widest hover:bg-dark transition-colors duration-300 animate-fadeInUp delay-300">
+                        SHOP NOW
+                    </button>
                 </div>
 
                 {/* Navigation Arrows (Bottom Right) */}
