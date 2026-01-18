@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const banners = [
     {
@@ -25,29 +26,34 @@ const PromoBanners = () => {
     const rightCardRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // GSAP ScrollTrigger animations
-        // Note: Install GSAP with `npm install gsap` if not already installed
-        const loadGSAP = async () => {
-            try {
-                const { gsap } = await import('gsap');
-                const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+        const initAnimations = async () => {
+            const { gsap } = await import('gsap');
+            const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 
-                gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger);
 
+            // Small delay to ensure DOM is ready
+            setTimeout(() => {
                 // Animate left card from left to center
                 if (leftCardRef.current) {
                     gsap.fromTo(
                         leftCardRef.current,
-                        { x: -200, opacity: 0 },
+                        {
+                            x: -300,
+                            opacity: 0
+                        },
                         {
                             x: 0,
                             opacity: 1,
-                            duration: 1.2,
+                            duration: 1.5,
                             ease: "power3.out",
                             scrollTrigger: {
                                 trigger: leftCardRef.current,
-                                start: "top 80%",
-                                toggleActions: "play none none none"
+                                start: "top 90%",
+                                end: "top 30%",
+                                toggleActions: "play none none none",
+                                markers: false, // Set to false after verification
+                                once: true
                             }
                         }
                     );
@@ -57,26 +63,35 @@ const PromoBanners = () => {
                 if (rightCardRef.current) {
                     gsap.fromTo(
                         rightCardRef.current,
-                        { x: 200, opacity: 0 },
+                        {
+                            x: 300,
+                            opacity: 0
+                        },
                         {
                             x: 0,
                             opacity: 1,
-                            duration: 1.2,
+                            duration: 1.5,
                             ease: "power3.out",
                             scrollTrigger: {
                                 trigger: rightCardRef.current,
-                                start: "top 80%",
-                                toggleActions: "play none none none"
+                                start: "top 90%",
+                                end: "top 30%",
+                                toggleActions: "play none none none",
+                                markers: false, // Set to false after verification
+                                once: true
                             }
                         }
                     );
                 }
-            } catch (error) {
-                console.warn('GSAP not installed. Run: npm install gsap');
-            }
+            }, 100);
         };
 
-        loadGSAP();
+        initAnimations();
+
+        // Cleanup function
+        return () => {
+            // Cleanup will be handled by GSAP's once: true option
+        };
     }, []);
 
     return (
@@ -87,30 +102,43 @@ const PromoBanners = () => {
                         <div
                             key={banner.id}
                             ref={index === 0 ? leftCardRef : rightCardRef}
-                            className="relative group overflow-hidden rounded-2xl"
+                            className="relative group overflow-hidden rounded-2xl opacity-0"
                             style={{ width: '100%', maxWidth: '633px', height: '570px', margin: '0 auto' }}
                         >
                             {/* Background Image - WebP works natively in Next.js */}
-                            <img
+                            <Image
                                 src={banner.image}
                                 alt={banner.title}
-                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover transition-transform duration-1000"
+                                priority
                             />
 
                             {/* Content Overlay */}
                             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/5 group-hover:bg-black/10 transition-colors">
-                                <span className="bg-[#7c8a6f] text-white text-[10px] font-bold px-3 py-1 mb-4 tracking-widest">
+                                <span className="bg-[#5f6b53] text-white text-[18px] font-bold px-4 py-2 mb-6 tracking-[0.2em] transform -translate-y-2 rounded-[4px]">
                                     {banner.tag}
                                 </span>
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-8 drop-shadow-sm">
-                                    {banner.title}
-                                </h3>
-                                <Link
-                                    href={banner.link}
-                                    className="bg-white text-dark text-[11px] font-bold px-8 py-3 tracking-widest hover:bg-dark hover:text-white transition-all duration-300"
-                                >
-                                    SHOP NOW
-                                </Link>
+                                <div className="mb-10 inline-block px-4">
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 drop-shadow-md tracking-tight">
+                                        {banner.title}
+                                    </h3>
+                                    <div className="w-full h-[1.5px] bg-white opacity-90 mx-auto transform translate-y-[-2px]"></div>
+                                </div>
+                                <div className="flex justify-center w-full">
+                                    <Link
+                                        href={banner.link}
+                                        className="bg-white text-dark text-[16px] font-bold px-12 py-0 tracking-[0.2em] relative overflow-hidden group/btn flex items-center justify-center h-[60px] min-w-[200px] rounded-[6px]"
+                                    >
+                                        <div className="relative h-[24px] overflow-hidden">
+                                            <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover/btn:-translate-y-1/2">
+                                                <span className="flex items-center justify-center h-[24px] uppercase">SHOP NOW</span>
+                                                <span className="flex items-center justify-center h-[24px] uppercase">SHOP NOW</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     ))}
