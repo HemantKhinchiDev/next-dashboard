@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import FeaturesBar from "@/components/FeaturesBar";
 import ShopByCategory from "@/components/ShopByCategory";
 import PromoBanners from "@/components/PromoBanners";
+import NewArrivals from "@/components/NewArrivals";
+import HurryUp from "@/components/HurryUp";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,6 +17,8 @@ export default function Home() {
         <FeaturesBar />
         <ShopByCategory />
         <PromoBanners />
+        <NewArrivals />
+        <HurryUp />
       </main>
       <Footer />
     </>

@@ -4,16 +4,16 @@ import React from 'react';
 import Link from 'next/link';
 
 const categoriesRow1 = [
-    { name: "BEAUTY GLOW", image: "/cat-beauty-glow-min.jpg", count: "12 Products" },
-    { name: "BODY LOTION", image: "/cat-body-lotion-min.jpg", count: "08 Products" },
-    { name: "COSMETICS", image: "/cat-cosmetics-min.jpg", count: "07 Products" },
-    { name: "FACE WASH", image: "/cat-face-wash-min.jpg", count: "05 Products" },
+    { name: "BEAUTY GLOW", image: "/images/cat-beauty-glow-min.jpg", count: "12 Products" },
+    { name: "BODY LOTION", image: "/images/cat-body-lotion-min.jpg", count: "08 Products" },
+    { name: "COSMETICS", image: "/images/cat-cosmetics-min.jpg", count: "07 Products" },
+    { name: "FACE WASH", image: "/images/cat-face-wash-min.jpg", count: "05 Products" },
 ];
 
 const categoriesRow2 = [
-    { name: "SKIN CARE", image: "/cat-skin-care-min.jpg", count: "15 Products" },
-    { name: "HAIR STYLE", image: "/cat-hair-style-min.jpg", count: "10 Products" },
-    { name: "FACE WASH", image: "/cat-face-wash-min.jpg", count: "09 Products" },
+    { name: "SKIN CARE", image: "/images/cat-skin-care-min.jpg", count: "15 Products" },
+    { name: "HAIR STYLE", image: "/images/cat-hair-style-min.jpg", count: "10 Products" },
+    { name: "FACE WASH", image: "/images/cat-face-wash-min.jpg", count: "09 Products" },
 ];
 
 const Diamond = () => (

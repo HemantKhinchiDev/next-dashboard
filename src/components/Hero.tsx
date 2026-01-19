@@ -109,7 +109,7 @@ const Hero = () => {
                     <div className="absolute bottom-10 left-4 2xl:left-[80px] bg-white p-4 shadow-xl rounded-md flex items-center gap-4 max-w-xs z-30 animate-slideInLeft">
                         <div className="relative w-12 h-12 bg-gray-100 flex-shrink-0">
                             <img
-                                src="/blusho-product-09-min.png"
+                                src="/images/blusho-product-09-min.png"
                                 alt="Product"
                                 className="w-full h-full object-cover"
                             />
