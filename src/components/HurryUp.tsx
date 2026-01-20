@@ -101,73 +101,72 @@ const HurryUp = () => {
     }, []);
 
     return (
-        <section className="w-full bg-white">
-            <div className="flex flex-col lg:flex-row">
+        <section
+            className="w-full relative bg-white overflow-hidden lg:h-[830px]"
+            style={{
+                backgroundImage: "url('/images/home6-banner-03.webp')",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+                backgroundPosition: "left center" // Assuming left alignment based on previous context, or just default
+            }}
+        >
 
-                {/* Left Side - Promo Image (Edge to Edge) */}
-                <div className="relative w-full lg:w-[45%] h-[400px] lg:h-auto lg:min-h-[700px]">
-                    <Image
-                        src="/images/home6-banner-03.webp"
-                        alt="Flash Sale Promo"
-                        fill
-                        className="object-cover"
-                    />
-                    {/* Decorative Elements */}
-                    <div className="absolute top-8 right-8">
-                        <div className="w-16 h-8 border-2 border-white/30 rounded-full"></div>
-                        <div className="flex gap-1 mt-2">
-                            <div className="w-2 h-8 bg-white/30 rounded-full"></div>
-                            <div className="w-2 h-6 bg-white/30 rounded-full"></div>
-                            <div className="w-2 h-10 bg-white/30 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Right Side - Content */}
-                <div className="flex-1 py-12 lg:py-16 px-6 lg:px-12 lg:-ml-24 relative z-10">
+            {/* Content Container - Right Side with Margin */}
+            <div className="relative z-10 w-full flex justify-end py-[50px]">
+                <div className="w-full lg:w-[60%] xl:w-[55%] lg:ml-[30%] pr-4 lg:pr-16">
 
                     {/* Header with Countdown */}
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black italic text-[#6b704f] tracking-tight" style={{ fontStyle: 'italic' }}>
-                            HURRY UP!
+                    <div className="flex flex-col xl:flex-row xl:items-end justify-between mb-8 gap-4 bg-transparent">
+                        <h2 className="text-[50px] md:text-[60px] lg:text-[80px] leading-[1em] font-extrabold mb-0">
+                            <span style={{
+                                textTransform: 'uppercase',
+                                WebkitTextStrokeColor: '#AFAFAF',
+                                WebkitTextStrokeWidth: '1px',
+                                color: 'transparent',
+                                boxSizing: 'border-box'
+                            }}>
+                                Hurry Up!
+                            </span>
                         </h2>
 
                         {/* Countdown Timer */}
-                        <div className="flex items-center gap-1 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                        <div className="flex items-center gap-2 text-2xl md:text-3xl font-bold text-gray-800 lg:text-gray-900 bg-white/80 lg:bg-transparent p-2 rounded-lg backdrop-blur-sm lg:backdrop-blur-none">
                             <div className="text-center">
                                 <span>{String(timeLeft.days).padStart(3, '0')}</span>
-                                <p className="text-[10px] font-normal text-gray-400 uppercase tracking-wider">Days</p>
+                                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Days</p>
                             </div>
-                            <span className="text-gray-300 mx-1">:</span>
+                            <span className="text-gray-400 mb-4">:</span>
                             <div className="text-center">
                                 <span>{String(timeLeft.hours).padStart(2, '0')}</span>
-                                <p className="text-[10px] font-normal text-gray-400 uppercase tracking-wider">Hrs</p>
+                                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Hrs</p>
                             </div>
-                            <span className="text-gray-300 mx-1">:</span>
+                            <span className="text-gray-400 mb-4">:</span>
                             <div className="text-center">
                                 <span>{String(timeLeft.mins).padStart(2, '0')}</span>
-                                <p className="text-[10px] font-normal text-gray-400 uppercase tracking-wider">Mins</p>
+                                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Mins</p>
                             </div>
-                            <span className="text-gray-300 mx-1">:</span>
+                            <span className="text-gray-400 mb-4">:</span>
                             <div className="text-center">
                                 <span>{String(timeLeft.secs).padStart(2, '0')}</span>
-                                <p className="text-[10px] font-normal text-gray-400 uppercase tracking-wider">Secs</p>
+                                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Secs</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Products Grid - with white background for overlap */}
-                    <div className="bg-white rounded-l-2xl shadow-xl p-6 lg:-ml-16">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Products Grid Container with White Background & Overlap Effect */}
+                    <div className="bg-white rounded-[20px] p-6 shadow-2xl relative">
+                        {/* Decorative curve/shape if needed can go here */}
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                             {flashSaleProducts.map((product) => (
                                 <div
                                     key={product.id}
-                                    className="group flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-[#6b704f] hover:shadow-md transition-all duration-300 cursor-pointer bg-white"
+                                    className="group flex items-center gap-4 p-2 transition-all duration-300 cursor-pointer"
                                 >
                                     {/* Product Image */}
-                                    <div className="relative w-24 h-24 bg-[#f2f3f0] rounded-lg overflow-hidden flex-shrink-0">
+                                    <div className="relative w-24 h-24 bg-[#f4f5f2] rounded-lg overflow-hidden flex-shrink-0 group-hover:shadow-sm transition-all">
                                         {product.discount && (
-                                            <span className="absolute top-1 left-1 bg-[#6b704f] text-white text-[9px] font-bold px-1.5 py-0.5 rounded z-10">
+                                            <span className="absolute top-2 left-2 bg-white text-dark text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
                                                 -{product.discount}%
                                             </span>
                                         )}
@@ -175,41 +174,50 @@ const HurryUp = () => {
                                             src={product.image}
                                             alt={product.title}
                                             fill
-                                            className="object-contain p-2 group-hover:scale-110 transition-transform duration-300"
+                                            className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                                         />
                                     </div>
 
                                     {/* Product Info */}
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-[10px] text-gray-400 uppercase tracking-wider mb-1">
-                                            {product.category}
-                                        </p>
-                                        <h3 className="text-sm font-semibold text-gray-900 mb-1.5 truncate group-hover:text-[#6b704f] transition-colors">
+                                    <div className="flex-1 min-w-0 flex flex-col gap-1">
+                                        <div className="flex items-center gap-2 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+                                            <span>{product.category}</span>
+                                        </div>
+
+                                        <h3 className="text-[15px] font-bold text-gray-900 leading-snug group-hover:text-[#6b704f] transition-colors line-clamp-2">
                                             {product.title}
                                         </h3>
 
                                         {/* Rating */}
-                                        <div className="flex items-center gap-1 text-yellow-500 text-sm mb-2">
-                                            {"★".repeat(product.rating)}
-                                            {"☆".repeat(5 - product.rating)}
-                                            <span className="text-gray-400 text-[10px] ml-1">
+                                        <div className="flex items-center gap-1">
+                                            <div className="flex text-[#6b704f] text-xs">
+                                                {"★".repeat(product.rating)}
+                                                <span className="text-gray-300">{"★".repeat(5 - product.rating)}</span>
+                                            </div>
+                                            <span className="text-gray-400 text-[11px] ml-1 font-medium">
                                                 {product.reviews} Review
                                             </span>
                                         </div>
 
                                         {/* Price */}
-                                        <div className="flex items-center gap-2">
-                                            {product.originalPrice && (
-                                                <span className="text-gray-400 line-through text-sm">
-                                                    ${product.originalPrice.toFixed(2)}
+                                        <div className="flex items-center gap-2 mt-0.5">
+                                            {product.originalPrice ? (
+                                                <>
+                                                    <span className="text-gray-400 line-through text-xs font-medium">
+                                                        ${product.originalPrice.toFixed(2)}
+                                                    </span>
+                                                    <span className="text-base font-bold text-gray-900">
+                                                        ${product.price.toFixed(2)}
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <span className="text-base font-bold text-gray-900">
+                                                    ${product.price.toFixed(2)}
+                                                    {product.priceMax && (
+                                                        <span className="text-gray-900"> – ${product.priceMax.toFixed(2)}</span>
+                                                    )}
                                                 </span>
                                             )}
-                                            <span className="text-lg font-bold text-gray-900">
-                                                ${product.price.toFixed(2)}
-                                                {product.priceMax && (
-                                                    <span className="text-gray-500 font-normal"> - ${product.priceMax.toFixed(2)}</span>
-                                                )}
-                                            </span>
                                         </div>
                                     </div>
                                 </div>
