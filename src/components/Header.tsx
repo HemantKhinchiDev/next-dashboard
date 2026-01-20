@@ -692,12 +692,12 @@ const Header = () => {
                             className="inline-flex items-center"
                         >
                             <img
-                                src="/logo_dark.svg"
+                                src="/images/logo_dark.svg"
                                 alt="Blusho"
                                 className="h-10 w-auto hidden dark:block"
                             />
                             <img
-                                src="/logo_light.svg"
+                                src="/images/logo_light.svg"
                                 alt="Blusho"
                                 className="h-10 w-auto block dark:hidden"
                             />
