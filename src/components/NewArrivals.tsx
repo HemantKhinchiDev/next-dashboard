@@ -79,7 +79,7 @@ const products = [
 export default function NewArrivals() {
     return (
         <section className="py-16 md:py-24 bg-white">
-            <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-[1400px] mx-auto px-4 text-center">
 
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">

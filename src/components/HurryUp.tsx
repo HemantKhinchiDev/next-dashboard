@@ -112,11 +112,11 @@ const HurryUp = () => {
         >
 
             {/* Content Container - Right Side with Margin */}
-            <div className="relative z-10 w-full flex justify-end py-[50px]">
-                <div className="w-full lg:w-[60%] xl:w-[55%] lg:ml-[30%] pr-4 lg:pr-16">
+            <div className="relative z-10 max-w-[1400px] mx-auto px-4 text-center py-[50px]">
+                <div className="w-full lg:ml-[22%] lg:w-auto">
 
                     {/* Header with Countdown */}
-                    <div className="flex flex-col xl:flex-row xl:items-end justify-between mb-8 gap-4 bg-transparent">
+                    <div className="flex flex-col xl:flex-row items-center justify-end self-stretch mb-8 gap-4 bg-transparent">
                         <h2 className="text-[50px] md:text-[60px] lg:text-[80px] leading-[1em] font-extrabold mb-0">
                             <span style={{
                                 textTransform: 'uppercase',
@@ -154,17 +154,17 @@ const HurryUp = () => {
                     </div>
 
                     {/* Products Grid Container with White Background & Overlap Effect */}
-                    <div className="bg-white rounded-[20px] p-6 shadow-2xl relative">
+                    <div className="bg-white rounded-[20px] p-6  relative">
                         {/* Decorative curve/shape if needed can go here */}
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                             {flashSaleProducts.map((product) => (
                                 <div
                                     key={product.id}
-                                    className="group flex items-center gap-4 p-2 transition-all duration-300 cursor-pointer"
+                                    className="group flex items-center gap-4 transition-all duration-300 cursor-pointer"
                                 >
                                     {/* Product Image */}
-                                    <div className="relative w-24 h-24 bg-[#f4f5f2] rounded-lg overflow-hidden flex-shrink-0 group-hover:shadow-sm transition-all">
+                                    <div className="relative w-[140px] h-[140px] bg-[#f4f5f2] rounded-lg overflow-hidden flex-shrink-0 group-hover:shadow-sm transition-all">
                                         {product.discount && (
                                             <span className="absolute top-2 left-2 bg-white text-dark text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
                                                 -{product.discount}%
@@ -184,7 +184,7 @@ const HurryUp = () => {
                                             <span>{product.category}</span>
                                         </div>
 
-                                        <h3 className="text-[15px] font-bold text-gray-900 leading-snug group-hover:text-[#6b704f] transition-colors line-clamp-2">
+                                        <h3 className="text-[15px] font-bold text-gray-900 leading-snug group-hover:text-[#6b704f] transition-colors line-clamp-2 text-left">
                                             {product.title}
                                         </h3>
 
