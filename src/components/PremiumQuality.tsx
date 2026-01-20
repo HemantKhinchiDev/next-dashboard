@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import RollingButton from '@/app/ui/rolling-button';
 
 const PremiumQuality = () => {
     return (
@@ -30,15 +31,16 @@ const PremiumQuality = () => {
             </div>
 
             <div className="max-w-[1400px] mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center">
+
 
                     {/* Left Column: Image */}
                     <div className="relative group">
                         {/* White border/frame effect */}
                         <div className="relative p-2 bg-white/20 rounded-[20px] backdrop-blur-sm transform transition-transform duration-500 group-hover:scale-[1.02]">
-                            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full rounded-[15px] overflow-hidden border-2 border-white/30">
+                            <div className="relative w-[770px] h-[450px] max-w-full rounded-[15px] overflow-hidden border-2 border-white">
                                 <Image
-                                    src="/images/after_image-min.jpg"
+                                    src="/images/after_image-min.webp"
                                     alt="Premium Quality"
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -49,7 +51,7 @@ const PremiumQuality = () => {
 
                     {/* Right Column: Content */}
                     <div className="text-white text-center lg:text-left">
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <h2 className="text-[36px] font-bold leading-tight mb-6">
                             Mastering The Art Of <br />
                             <span className="text-white/90">Premium Quality</span>
                         </h2>
@@ -59,12 +61,12 @@ const PremiumQuality = () => {
                             Type And Scrambled
                         </p>
 
-                        <Link
+                        <RollingButton
                             href="/shop"
-                            className="inline-flex items-center justify-center h-[55px] px-10 bg-white text-[#6b704f] text-[15px] font-bold uppercase tracking-[0.1em] rounded-md hover:bg-dark hover:text-white transition-all duration-300 shadow-lg"
-                        >
-                            Shop Now
-                        </Link>
+                            label="Shop Now"
+                            bgColor="bg-white"
+                            textColor="text-[#6b704f]"
+                        />
                     </div>
 
                 </div>
