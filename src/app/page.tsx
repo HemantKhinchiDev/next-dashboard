@@ -6,6 +6,9 @@ import ShopByCategory from "@/components/ShopByCategory";
 import PromoBanners from "@/components/PromoBanners";
 import NewArrivals from "@/components/NewArrivals";
 import HurryUp from "@/components/HurryUp";
+import HotSelling from "@/components/HotSelling";
+import Marquee from "@/components/Marquee";
+import PremiumQuality from "@/components/PremiumQuality";
 import Image from "next/image";
 
 export default function Home() {
@@ -19,6 +22,9 @@ export default function Home() {
         <PromoBanners />
         <NewArrivals />
         <HurryUp />
+        <Marquee />
+        <PremiumQuality />
+        <HotSelling />
       </main>
       <Footer />
     </>
