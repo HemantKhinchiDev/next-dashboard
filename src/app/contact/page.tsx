@@ -1,13 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
-import { sendContactEmail } from "@/app/actions";
+import { useActionState, useState, useEffect } from "react";
+import { sendContactEmail, ContactFormState } from "@/app/actions";
 import InnerHeader from "@/components/InnerHeader";
 import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
-const initialState = {
+const initialState: ContactFormState = {
     success: false,
     message: '',
     errors: {}
@@ -15,6 +15,30 @@ const initialState = {
 
 export default function Contact() {
     const [state, formAction, isPending] = useActionState(sendContactEmail, initialState);
+    const [displayMessage, setDisplayMessage] = useState('');
+    const [displaySuccess, setDisplaySuccess] = useState(false);
+
+    // Sync local state with server action state
+    useEffect(() => {
+        if (state.message) {
+            setDisplayMessage(state.message);
+            setDisplaySuccess(state.success || false);
+
+            // Auto-hide ONLY if success
+            if (state.success) {
+                const timer = setTimeout(() => {
+                    setDisplayMessage('');
+                }, 3000);
+                return () => clearTimeout(timer);
+            }
+        }
+    }, [state]);
+
+    // Clear message on user input
+    const handleInput = () => {
+        if (displayMessage) setDisplayMessage('');
+    };
+
     return (
         <main className="min-h-screen flex flex-col font-body">
             <InnerHeader />
@@ -83,9 +107,9 @@ export default function Contact() {
                             </p>
 
                             <form action={formAction} className="space-y-6">
-                                {state.message && (
-                                    <div className={`p-4 rounded-sm text-sm ${state.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
-                                        {state.message}
+                                {displayMessage && (
+                                    <div className={`p-4 rounded-sm text-sm ${displaySuccess ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'} transition-opacity duration-500 ease-in-out`}>
+                                        {displayMessage}
                                     </div>
                                 )}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -94,6 +118,7 @@ export default function Contact() {
                                             name="name"
                                             type="text"
                                             placeholder="Name"
+                                            onChange={handleInput}
                                             className="w-full bg-[#f2f3f0] border-none rounded-sm px-5 py-4 text-sm text-gray-700 placeholder-gray-500 focus:ring-1 focus:ring-[#6b704f] focus:outline-none"
                                         />
                                         {state.errors?.name && <p className="text-red-500 text-xs">{state.errors.name}</p>}
@@ -103,6 +128,7 @@ export default function Contact() {
                                             name="email"
                                             type="email"
                                             placeholder="E-mail"
+                                            onChange={handleInput}
                                             className="w-full bg-[#f2f3f0] border-none rounded-sm px-5 py-4 text-sm text-gray-700 placeholder-gray-500 focus:ring-1 focus:ring-[#6b704f] focus:outline-none"
                                         />
                                         {state.errors?.email && <p className="text-red-500 text-xs">{state.errors.email}</p>}
@@ -112,6 +138,7 @@ export default function Contact() {
                                             name="phone"
                                             type="tel"
                                             placeholder="Phone"
+                                            onChange={handleInput}
                                             className="w-full bg-[#f2f3f0] border-none rounded-sm px-5 py-4 text-sm text-gray-700 placeholder-gray-500 focus:ring-1 focus:ring-[#6b704f] focus:outline-none"
                                         />
                                     </div>
@@ -120,6 +147,7 @@ export default function Contact() {
                                             name="subject"
                                             type="text"
                                             placeholder="Type Subject"
+                                            onChange={handleInput}
                                             className="w-full bg-[#f2f3f0] border-none rounded-sm px-5 py-4 text-sm text-gray-700 placeholder-gray-500 focus:ring-1 focus:ring-[#6b704f] focus:outline-none"
                                         />
                                         {state.errors?.subject && <p className="text-red-500 text-xs">{state.errors.subject}</p>}
@@ -130,6 +158,7 @@ export default function Contact() {
                                         name="message"
                                         rows={5}
                                         placeholder="Your Message"
+                                        onChange={handleInput}
                                         className="w-full bg-[#f2f3f0] border-none rounded-sm px-5 py-4 text-sm text-gray-700 placeholder-gray-500 focus:ring-1 focus:ring-[#6b704f] focus:outline-none resize-none"
                                     ></textarea>
                                     {state.errors?.message && <p className="text-red-500 text-xs">{state.errors.message}</p>}

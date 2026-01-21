@@ -12,7 +12,19 @@ const ContactSchema = z.object({
     message: z.string().min(10, { message: 'Message must be at least 10 characters' }),
 })
 
-export async function sendContactEmail(prevState: any, formData: FormData) {
+export type ContactFormState = {
+    success: boolean
+    message: string
+    errors?: {
+        name?: string[]
+        email?: string[]
+        phone?: string[]
+        subject?: string[]
+        message?: string[]
+    }
+}
+
+export async function sendContactEmail(prevState: ContactFormState, formData: FormData): Promise<ContactFormState> {
     const validatedFields = ContactSchema.safeParse({
         name: formData.get('name'),
         email: formData.get('email'),
@@ -33,22 +45,27 @@ export async function sendContactEmail(prevState: any, formData: FormData) {
     const { name, email, phone, subject, message } = validatedFields.data
 
     try {
-        // Configure transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        })
+        // Create a test account on Ethereal (for testing purposes)
+        // Note: In a real app, you'd create this once and store creds, or use real SMTP
+        const testAccount = await nodemailer.createTestAccount();
 
-        // Verify connection configuration
-        // await transporter.verify();
+        // Configure transporter for Ethereal
+        const transporter = nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            secure: false,
+            auth: {
+                user: testAccount.user,
+                pass: testAccount.pass,
+            },
+        });
+
+        console.log("Using Ethereal Account:", testAccount.user);
 
         const mailOptions = {
-            from: `"${name}" <${email}>`, // sender address
-            to: "hkhinchi.trellance@gmail.com", // receiver address (as requested)
-            subject: `New Contact Form Submission: ${subject}`, // Subject line
+            from: `"${name}" <${email}>`,
+            to: "hkhinchi.trellance@gmail.com",
+            subject: `New Contact Form Submission: ${subject}`,
             text: `
           Name: ${name}
           Email: ${email}
@@ -70,25 +87,22 @@ export async function sendContactEmail(prevState: any, formData: FormData) {
         `,
         };
 
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.warn("EMAIL_USER or EMAIL_PASS not set. Email will not be sent.");
-            // For testing purposes, we return success but log warning if envs are missing
-            // or we could throw error. User requested "I will get email", so this is critical.
-            // But without creds we can't send.
+        const info = await transporter.sendMail(mailOptions);
 
-            // Simulating success for UI if no creds, but logging it.
-            console.log("Simulated Email Send:", mailOptions);
-            return { success: true, message: 'Message sent successfully! (Simulated - Configure .env for real sending)' }
+        const previewUrl = nodemailer.getTestMessageUrl(info);
+        console.log("Message sent: %s", info.messageId);
+        console.log("Preview URL: %s", previewUrl);
+
+        return {
+            success: true,
+            message: `Message sent! View preview: ${previewUrl}`
         }
 
-        await transporter.sendMail(mailOptions);
-
-        return { success: true, message: 'Message sent successfully!' }
     } catch (error) {
         console.error('Failed to send email:', error)
         return {
             success: false,
-            message: 'Failed to send message. Please try again later.',
+            message: `Failed to send: ${(error as Error).message}`,
         }
     }
 }
