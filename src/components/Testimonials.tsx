@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import gsap from "gsap";
+import SectionHeader from "./SectionHeader";
 
 const testimonials = [
     {
@@ -79,14 +80,7 @@ export default function Testimonials() {
 
     return (
         <section className="w-full py-20 bg-[#f2f3f0] flex flex-col items-center">
-            <div className="text-center mb-10">
-                <p className="text-sm font-bold tracking-widest text-[#5a5a5a] uppercase mb-2">
-                    WHAT CLIENTS ARE SAYING
-                </p>
-                <h2 className="text-4xl font-bold text-black">
-                    Top Reviews Over The Globe
-                </h2>
-            </div>
+            <SectionHeader subTitle="WHAT CLIENTS ARE SAYING" title="Top Reviews Over The Globe" />
 
             <div className="w-full max-w-[1400px] flex flex-col md:flex-row items-stretch justify-center gap-8 px-4 md:px-8 mb-20">
                 {/* Image Section */}

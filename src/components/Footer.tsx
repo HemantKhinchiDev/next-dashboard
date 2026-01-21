@@ -94,7 +94,7 @@ const Footer = () => {
                             <Link href="/" className="inline-block">
                                 {/* Use the same logo logic as Header or just the dark mode one since footer is dark */}
                                 <img
-                                    src="/logo_light.svg"
+                                    src="/images/logo_light.svg"
                                     alt="Blusho"
                                     className="h-10 w-auto"
                                 />
