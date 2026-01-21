@@ -1,10 +1,11 @@
+import React from "react";
 import Header from "@/components/Header";
 
-export default function HomeLayout({
-    children,
-}: {
+interface HomeLayoutProps {
     children: React.ReactNode;
-}) {
+}
+
+export default function HomeLayout({ children }: HomeLayoutProps) {
     return (
         <>
             <Header />
