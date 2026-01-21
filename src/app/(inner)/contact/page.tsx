@@ -2,7 +2,6 @@
 
 import { useActionState, useState, useEffect } from "react";
 import { sendContactEmail, ContactFormState } from "@/app/actions";
-import InnerHeader from "@/components/InnerHeader";
 import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
@@ -41,7 +40,6 @@ export default function Contact() {
 
     return (
         <main className="min-h-screen flex flex-col font-body">
-            <InnerHeader />
             <PageHeader title="Contact" breadcrumb="Home > Contact" />
 
             <section className="py-16 md:py-24">
