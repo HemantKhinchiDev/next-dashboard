@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import SectionHeader from "./SectionHeader";
 
 const categoriesRow1 = [
     { name: "BEAUTY GLOW", image: "/images/cat-beauty-glow-min.jpg", count: "12 Products" },
@@ -24,12 +25,7 @@ const ShopByCategory = () => {
     return (
         <section className="w-full py-24 bg-white overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-4 text-center">
-                <div className="mb-16">
-                    <span className="text-[11px] font-bold tracking-[0.4em] text-gray-400 uppercase">
-                        Top Search Categories
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-dark mt-4">Shop by Categories</h2>
-                </div>
+                <SectionHeader subTitle="Top Search Categories" title="Shop by Categories" className="mb-16" />
 
                 {/* Categories Container */}
                 <div className="flex flex-col gap-12">

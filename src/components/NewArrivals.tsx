@@ -1,6 +1,7 @@
 "use client";
 
 import ProductCard from "./ProductCard";
+import SectionHeader from "./SectionHeader";
 
 const products = [
     {
@@ -81,16 +82,10 @@ export default function NewArrivals() {
         <section className="py-16 md:py-24 bg-white">
             <div className="max-w-[1400px] mx-auto px-4 text-center">
 
+
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                    <div className="text-left">
-                        <span className="text-[#6b704f] font-medium tracking-wider uppercase text-sm mb-2 block">
-                            Our Products
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
-                            Explore New Arrivals
-                        </h2>
-                    </div>
+                    <SectionHeader subTitle="Our Products" title="Explore New Arrivals" centered={false} className="mb-0" />
 
                     <a href="/shop" className="bg-white border border-gray-300 text-gray-800 px-6 py-3 text-sm font-bold tracking-wide rounded-[6px] hover:bg-[#6b704f] hover:text-white hover:border-[#6b704f] transition-all duration-300 cursor-pointer">
                         SEE ALL PRODUCTS
