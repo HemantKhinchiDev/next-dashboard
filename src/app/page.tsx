@@ -9,6 +9,7 @@ import HurryUp from "@/components/HurryUp";
 import HotSelling from "@/components/HotSelling";
 import Marquee from "@/components/Marquee";
 import PremiumQuality from "@/components/PremiumQuality";
+import Testimonials from "@/components/Testimonials";
 import Image from "next/image";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         <Marquee />
         <PremiumQuality />
         <HotSelling />
+        <Testimonials />
       </main>
       <Footer />
     </>
