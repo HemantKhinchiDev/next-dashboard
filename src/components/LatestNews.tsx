@@ -63,14 +63,7 @@ export default function LatestNews() {
                                     style={{
                                         backgroundColor: 'var(--rt-gray-color, #f2f3f0)',
                                         color: '#6b704f',
-                                        borderRadius: '0 10px 0 0', // Interpreted "0 10px 0" as Top-Right rounded for bottom-left placement often means top-right corner of the element. Standard 3-value syntax 0 10px 0 means TopLeft=0, TopRight=10, BottomRight=10, BottomLeft=0? No.
-                                        // CSS syntax: 3 values: top-left, top-right-and-bottom-left, bottom-right.
-                                        // If user wants specific shape, I'll stick to 0 10px 0 if valid or '0 10px 0 0'.
-                                        // Let's assume standard 0 10px 0 (TL=0, TR/BL=10, BR=0).
-                                        // Ideally explicit: 0px 10px 0px 0px probably matches "bottom left corner" visual better if it connects to the corner.
-                                        // Actually, let's use the exact values user gave but in a safe way.
-                                        // `border-radius: 0 10px 0` is valid CSS.
-                                        borderRadius: '0 10px 0 0', // Usually for bottom-left corner tag, you round top-right. 
+                                        borderRadius: '0 10px 0 0',
                                         fontSize: '14px',
                                         fontWeight: 600,
                                         padding: '10px 16px 8px',
