@@ -97,12 +97,14 @@ const Hero = () => {
                     <button
                         onClick={prevSlide}
                         className="w-12 h-12 bg-white text-gray-400 hover:bg-olive hover:text-white transition-all flex items-center justify-center shadow-sm"
+                        aria-label="Previous slide"
                     >
                         <FaArrowLeft />
                     </button>
                     <button
                         onClick={nextSlide}
                         className="w-12 h-12 bg-white text-gray-400 hover:bg-olive hover:text-white transition-all flex items-center justify-center shadow-sm"
+                        aria-label="Next slide"
                     >
                         <FaArrowRight />
                     </button>

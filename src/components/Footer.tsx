@@ -110,7 +110,7 @@ const Footer = () => {
                                         placeholder="Enter your email"
                                         className="bg-transparent w-full outline-none text-sm text-white placeholder-gray-500"
                                     />
-                                    <button type="submit" className="text-[#cfcfcf] hover:text-white transition-colors">
+                                    <button type="submit" className="text-[#cfcfcf] hover:text-white transition-colors" aria-label="Subscribe">
                                         <FaPaperPlane />
                                     </button>
                                 </form>
@@ -118,16 +118,16 @@ const Footer = () => {
 
                             <div className="flex gap-4 mt-2">
                                 {/* Social Icons */}
-                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]">
+                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]" aria-label="Facebook">
                                     <FaFacebookF />
                                 </a>
-                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]">
+                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]" aria-label="Twitter">
                                     <FaXTwitter />
                                 </a>
-                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]">
+                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]" aria-label="Instagram">
                                     <FaInstagram />
                                 </a>
-                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]">
+                                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:border-pink-500 transition-all text-[#cfcfcf]" aria-label="Pinterest">
                                     <FaPinterestP />
                                 </a>
                             </div>
