@@ -1,6 +1,7 @@
 "use server";
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeader from "./SectionHeader";
 
@@ -38,9 +39,11 @@ const ShopByCategory = () => {
                                     className="group flex items-center gap-5 transition-all duration-300"
                                 >
                                     <div className="relative w-[75px] h-[75px] rounded-full overflow-hidden border border-gray-100 group-hover:border-olive transition-all duration-500">
-                                        <img
+                                        <Image
                                             src={cat.image}
                                             alt={cat.name}
+                                            width={75}
+                                            height={75}
                                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-115"
                                         />
                                     </div>
@@ -69,9 +72,11 @@ const ShopByCategory = () => {
                                     className="group flex items-center gap-5 transition-all duration-300"
                                 >
                                     <div className="relative w-[75px] h-[75px] rounded-full overflow-hidden border border-gray-100 group-hover:border-olive transition-all duration-500">
-                                        <img
+                                        <Image
                                             src={cat.image}
                                             alt={cat.name}
+                                            width={75}
+                                            height={75}
                                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-115"
                                         />
                                     </div>

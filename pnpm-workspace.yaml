@@ -2,3 +2,6 @@ ignoredBuiltDependencies:
   - bcrypt
   - bufferutil
   - esbuild
+
+onlyBuiltDependencies:
+  - sharp
