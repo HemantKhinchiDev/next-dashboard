@@ -39,10 +39,12 @@ const Hero = () => {
         <section className={`relative w-full h-[600px] lg:h-[800px] overflow-hidden transition-colors duration-500 ease-in-out ${slides[currentSlide].bgColor === "#e8dfd8" ? "bg-[#e8dfd8]" : "bg-[#f5e6e0]"}`}>
 
             <div className="absolute inset-0 w-full h-full">
-                <img
+                <Image
                     src={slides[currentSlide].image}
                     alt="Hero Background"
-                    className="w-full h-full object-cover object-center lg:object-right"
+                    fill
+                    className="object-cover object-center lg:object-right"
+                    priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white/40 to-transparent lg:from-transparent"></div>
             </div>
@@ -61,9 +63,11 @@ const Hero = () => {
                             : "text-gray-400 hover:text-white hover:bg-olive"
                             }`}
                     >
-                        <img
+                        <Image
                             src={currency.icon}
                             alt={currency.code}
+                            width={16} // w-4 matches 16px if w-4 is 1rem (16px) -> wait w-4 is 1rem=16px.
+                            height={16}
                             className="w-0 h-4 object-contain opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out"
                         />
                         <span>{currency.label}</span>
@@ -108,10 +112,12 @@ const Hero = () => {
                 {showPopup && (
                     <div className="absolute bottom-10 left-4 2xl:left-[80px] bg-white p-4 shadow-xl rounded-md flex items-center gap-4 max-w-xs z-30 animate-slideInLeft">
                         <div className="relative w-12 h-12 bg-gray-100 flex-shrink-0">
-                            <img
+                            <Image
                                 src="/images/blusho-product-09-min.png"
                                 alt="Product"
-                                className="w-full h-full object-cover"
+                                width={48}
+                                height={48}
+                                className="object-cover"
                             />
                             <div className="absolute -top-1 -right-1 bg-green-500 text-white text-[8px] p-0.5 rounded-full">
                                 <FaCheck />
