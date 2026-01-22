@@ -413,7 +413,7 @@ const Header = () => {
                                     About Us
                                 </Link>
                                 <Link
-                                    href="https://www.radiustheme.com/demo/wordpress/themes/blusho/contact/"
+                                    href="/contact"
                                     className="block px-4 py-2 hover:bg-gray-100 text-sm"
                                 >
                                     Contact
@@ -677,7 +677,7 @@ const Header = () => {
 
                         {/* Contact */}
                         <Link
-                            href="https://www.radiustheme.com/demo/wordpress/themes/blusho/contact/"
+                            href="/contact"
                             className="hover:text-pink-400 transition-colors"
                         >
                             Contact
