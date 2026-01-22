@@ -46,6 +46,7 @@ const Hero = () => {
                     className="object-cover object-center lg:object-right"
                     priority
                     fetchPriority="high"
+                    sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white/40 to-transparent lg:from-transparent"></div>
             </div>
@@ -67,9 +68,10 @@ const Hero = () => {
                         <Image
                             src={currency.icon}
                             alt={currency.code}
-                            width={16} // w-4 matches 16px if w-4 is 1rem (16px) -> wait w-4 is 1rem=16px.
+                            width={16}
                             height={16}
-                            className="w-0 h-4 object-contain opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out"
+                            className="w-auto h-4 object-contain opacity-0 group-hover:w-6 group-hover:opacity-100 group-hover:mr-2 transition-all duration-300 ease-in-out"
+                            style={{ width: 'auto' }}
                         />
                         <span>{currency.label}</span>
                     </button>

@@ -35,6 +35,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     src={product.image}
                     alt={product.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={`object-contain p-4 transition-all duration-500 group-hover:scale-105 ${product.hoverImage ? 'group-hover:opacity-0' : ''}`}
                 />
 
@@ -44,6 +45,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                         src={product.hoverImage}
                         alt={`${product.title} - alternate view`}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-contain p-4 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                     />
                 )}

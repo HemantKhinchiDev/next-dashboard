@@ -26,71 +26,54 @@ const PromoBanners = () => {
     const rightCardRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        let ctx: gsap.Context;
+
         const initAnimations = async () => {
             const { gsap } = await import('gsap');
             const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 
             gsap.registerPlugin(ScrollTrigger);
 
-            // Small delay to ensure DOM is ready
-            setTimeout(() => {
-                // Animate left card from left to center
+            // Use gsap.context for cleanup
+            ctx = gsap.context(() => {
                 if (leftCardRef.current) {
-                    gsap.fromTo(
-                        leftCardRef.current,
+                    gsap.fromTo(leftCardRef.current,
+                        { x: -300, opacity: 0 },
                         {
-                            x: -300,
-                            opacity: 0
-                        },
-                        {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.5,
-                            ease: "power3.out",
+                            x: 0, opacity: 1, duration: 1.5, ease: "power3.out",
                             scrollTrigger: {
                                 trigger: leftCardRef.current,
                                 start: "top 90%",
                                 end: "top 30%",
                                 toggleActions: "play none none none",
-                                markers: false, // Set to false after verification
                                 once: true
                             }
                         }
                     );
                 }
 
-                // Animate right card from right to center
                 if (rightCardRef.current) {
-                    gsap.fromTo(
-                        rightCardRef.current,
+                    gsap.fromTo(rightCardRef.current,
+                        { x: 300, opacity: 0 },
                         {
-                            x: 300,
-                            opacity: 0
-                        },
-                        {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.5,
-                            ease: "power3.out",
+                            x: 0, opacity: 1, duration: 1.5, ease: "power3.out",
                             scrollTrigger: {
                                 trigger: rightCardRef.current,
                                 start: "top 90%",
                                 end: "top 30%",
                                 toggleActions: "play none none none",
-                                markers: false, // Set to false after verification
                                 once: true
                             }
                         }
                     );
                 }
-            }, 100);
+            });
         };
 
         initAnimations();
 
-        // Cleanup function
         return () => {
-            // Cleanup will be handled by GSAP's once: true option
+            if (ctx) ctx.revert();
         };
     }, []);
 
