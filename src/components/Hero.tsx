@@ -45,6 +45,7 @@ const Hero = () => {
                     fill
                     className="object-cover object-center lg:object-right"
                     priority
+                    fetchPriority="high"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white/40 to-transparent lg:from-transparent"></div>
             </div>
